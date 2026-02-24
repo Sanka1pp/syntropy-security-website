@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Syntropy Security - AI-Augmented Vulnerability Research. Specializing in CVE discovery, penetration testing, and architectural security analysis.">
+    <meta name="keywords" content="CVE research, penetration testing, vulnerability research, cybersecurity, AI security, red team, Syntropy Security">
+    <meta name="author" content="Sankalp Devidas Hanwate">
+    <title>Syntropy Security | AI-Augmented Vulnerability Research</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>SYNTROPY SECURITY</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Defense Through Offensive Insight</p>
+                <h1 class="hero-title">We Find Vulnerabilities in Systems Everyone Else Trusts</h1>
+                <p class="hero-description">
+                    Syntropy Security specializes in AI-augmented vulnerability research, discovering critical architectural 
+                    flaws in legacy healthcare and financial infrastructure. We don't just run scanners—we analyze logic, 
+                    challenge assumptions, and find the vulnerabilities that matter.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h2>3</h2>
+                        <p>Federal CVE Assignments</p>
+                    </div>
+                    <div class="stat">
+                        <h2>11</h2>
+                        <p>Critical Vulnerabilities Discovered</p>
+                    </div>
+                    <div class="stat">
+                        <h2>2</h2>
+                        <p>Packet Storm Publications</p>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="research.html" class="btn btn-primary">View Research</a>
+                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CVE Showcase -->
+    <section class="cve-showcase">
+        <div class="container">
+            <h2 class="section-title">Published CVE Research</h2>
+            <p class="section-subtitle">Federally-assigned vulnerability identifiers validating our research methodology</p>
+            
+            <div class="cve-grid">
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2025-70062</span>
+                        <span class="severity critical">Critical</span>
+                    </div>
+                    <h3>Cross-Site Request Forgery</h3>
+                    <p>PHPGurukul Hospital Management System v4.0</p>
+                    <p class="cve-description">
+                        Unauthenticated attacker can force authenticated users to perform privileged actions, 
+                        including creating administrative accounts, through crafted CSRF payloads.
+                    </p>
+                    <div class="cve-links">
+                        <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory</a>
+                        <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">Technical Details</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2025-70063</span>
+                        <span class="severity high">High</span>
+                    </div>
+                    <h3>Insecure Direct Object Reference</h3>
+                    <p>PHPGurukul Hospital Management System v4.0</p>
+                    <p class="cve-description">
+                        Unauthorized access to patient medical records (PHI) through predictable parameter 
+                        manipulation, bypassing access controls entirely.
+                    </p>
+                    <div class="cve-links">
+                        <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory</a>
+                        <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">Technical Details</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2025-70064</span>
+                        <span class="severity critical">Critical</span>
+                    </div>
+                    <h3>Privilege Escalation (RBAC Bypass)</h3>
+                    <p>PHPGurukul Hospital Management System v4.0</p>
+                    <p class="cve-description">
+                        Patient-level users can access full administrative dashboard without authentication 
+                        through role-based access control failure.
+                    </p>
+                    <div class="cve-links">
+                        <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory</a>
+                        <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">Technical Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cve-footer">
+                <p>8 additional CVE submissions pending MITRE review</p>
+                <a href="research.html" class="btn btn-primary">Read Full Research</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="container">
+            <h2 class="section-title">AI-Augmented Architectural Analysis</h2>
+            <p class="section-subtitle">Why our methodology finds vulnerabilities automated scanners miss</p>
+            
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-icon">01</div>
+                    <h3>Architecture Review</h3>
+                    <p>
+                        We use AI (Gemini, Claude) to analyze entire codebases for architectural patterns, 
+                        not just syntax errors. This reveals business logic assumptions that become vulnerabilities.
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">02</div>
+                    <h3>Assumption Testing</h3>
+                    <p>
+                        Legacy systems assume perimeter security, session validation, and user honesty. 
+                        We systematically challenge every assumption to find critical flaws.
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">03</div>
+                    <h3>Manual Verification</h3>
+                    <p>
+                        AI suggests potential vulnerabilities; we verify with manual testing, proof-of-concept 
+                        development, and exploit chains. Only verified findings are reported.
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">04</div>
+                    <h3>Responsible Disclosure</h3>
+                    <p>
+                        We coordinate with MITRE for CVE assignments, notify vendors, and publish research 
+                        only after appropriate timelines. Ethics first, always.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Penetration Testing</h3>
+                    <p>
+                        Web application, API, and network security assessments focusing on business logic flaws 
+                        and architectural failures, not just automated scan results.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Vulnerability Research</h3>
+                    <p>
+                        Deep-dive source code analysis and CVE coordination for organizations that need federal 
+                        validation of security findings.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>GRC Advisory</h3>
+                    <p>
+                        Risk assessment, security policy development, and compliance gap analysis that translates 
+                        technical vulnerabilities into business impact.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Security Training</h3>
+                    <p>
+                        Teaching the zero-cost path to CVE credentials. We train students and early-career 
+                        professionals in systematic vulnerability research.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- External Validation -->
+    <section class="validation">
+        <div class="container">
+            <h2 class="section-title">External Validation</h2>
+            
+            <div class="validation-grid">
+                <div class="validation-card">
+                    <h3>Packet Storm Security</h3>
+                    <p class="quote">
+                        "Nice research! You drove a bus through this..."
+                    </p>
+                    <p class="source">— PacketStorm Staff Review</p>
+                    <a href="https://packetstorm.news/files/author/31694" target="_blank" class="validation-link">
+                        View Publications →
+                    </a>
+                </div>
+
+                <div class="validation-card">
+                    <h3>Federal CVE Program</h3>
+                    <p class="quote">
+                        3 CVE assignments (CVE-2025-70062, CVE-2025-70063, CVE-2025-70064) validating 
+                        vulnerability research quality and disclosure process.
+                    </p>
+                    <p class="source">— MITRE Corporation</p>
+                </div>
+
+                <div class="validation-card">
+                    <h3>Industry Certifications</h3>
+                    <p class="quote">
+                        ISC2 CC, CRTOM, CCEP, Google Cybersecurity, LetsDefend DFIR/Malware/SOC, 
+                        TCM Security PEH & OSINT
+                    </p>
+                    <a href="about.html" class="validation-link">
+                        View Full Credentials →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Need Architectural Security Analysis?</h2>
+            <p>
+                We specialize in finding critical vulnerabilities in legacy healthcare and financial systems. 
+                If automated scanners aren't finding the flaws that matter, let's talk.
+            </p>
+            <a href="contact.html" class="btn btn-primary-light">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Syntropy Security</h3>
+                    <p>AI-Augmented Vulnerability Research</p>
+                    <p>Mumbai, Maharashtra, India</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Research</h4>
+                    <ul>
+                        <li><a href="https://github.com/Sanka1pp" target="_blank">GitHub Repositories</a></li>
+                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">PacketStorm Publications</a></li>
+                        <li><a href="research.html">CVE Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/sankalp-hanwate-189598284/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/company/syntropy-security/" target="_blank">Company Page</a></li>
+                        <li><a href="contact.html">Contact Form</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p class="legal-text">
+                        All research conducted ethically with responsible disclosure practices. 
+                        CVE assignments validated by MITRE Corporation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Syntropy Security. All rights reserved.</p>
+                <p>Founder: Sankalp Devidas Hanwate | ISC2 CC | CRTOM | CCEP</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
