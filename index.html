@@ -3,24 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Syntropy Security - AI-Augmented Vulnerability Research. Specializing in CVE discovery, penetration testing, and architectural security analysis.">
-    <meta name="keywords" content="CVE research, penetration testing, vulnerability research, cybersecurity, AI security, red team, Syntropy Security">
-    <meta name="author" content="Sankalp Devidas Hanwate">
-    <title>Syntropy Security | AI-Augmented Vulnerability Research</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Syntropy Security - AI-Augmented Vulnerability Research. 10 Federal CVE assignments specializing in architectural failures in legacy systems.">
+    <title>Syntropy Security | 10 Federal CVE Assignments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0e1a;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-gold: #fbbf24;
+            --border-subtle: #374151;
+            --critical: #ef4444;
+            --high: #f97316;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0a0e1a 0%, #1e3a8a 50%, #312e81 100%);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--accent-gold);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.375rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(249, 250, 251, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(249, 250, 251, 0.1);
+            border-color: var(--text-secondary);
+        }
+
+        .stats-bar {
+            background: var(--bg-card);
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--accent-primary);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cve-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .cve-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cve-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cve-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .cve-card:hover::before {
+            opacity: 1;
+        }
+
+        .cve-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .cve-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: rgba(249, 250, 251, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .severity-badge {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .severity-critical {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--critical);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .severity-high {
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--high);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .cve-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .cve-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .cve-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cve-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .cve-link:hover {
+            color: var(--accent-secondary);
+        }
+
+        .cve-link::before {
+            content: '→';
+            transition: transform 0.2s ease;
+        }
+
+        .cve-link:hover::before {
+            transform: translateX(3px);
+        }
+
+        .quote-section {
+            margin-top: 4rem;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.75rem;
+            font-style: italic;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            color: var(--text-secondary);
+            font-style: normal;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-subtle);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .cve-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>SYNTROPY SECURITY</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SYNTROPY_SEC</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -28,288 +500,214 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <p class="hero-subtitle">Defense Through Offensive Insight</p>
-                <h1 class="hero-title">We Find Vulnerabilities in Systems Everyone Else Trusts</h1>
-                <p class="hero-description">
-                    Syntropy Security specializes in AI-augmented vulnerability research, discovering critical architectural 
-                    flaws in legacy healthcare and financial infrastructure. We don't just run scanners—we analyze logic, 
-                    challenge assumptions, and find the vulnerabilities that matter.
-                </p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <h2>3</h2>
-                        <p>Federal CVE Assignments</p>
-                    </div>
-                    <div class="stat">
-                        <h2>11</h2>
-                        <p>Critical Vulnerabilities Discovered</p>
-                    </div>
-                    <div class="stat">
-                        <h2>2</h2>
-                        <p>Packet Storm Publications</p>
-                    </div>
-                </div>
-                <div class="hero-cta">
-                    <a href="research.html" class="btn btn-primary">View Research</a>
-                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
-                </div>
+        <div class="hero-content">
+            <span class="hero-tag">10 Federal CVE Assignments • 71% Success Rate</span>
+            <h1>Defense Through Offensive Insight</h1>
+            <p class="hero-subtitle">Discovering architectural vulnerabilities in legacy systems before attackers do. Specializing in healthcare and financial infrastructure security.</p>
+            <div class="cta-buttons">
+                <a href="research.html" class="btn btn-primary">View Research</a>
+                <a href="contact.html" class="btn btn-secondary">Work With Us</a>
             </div>
         </div>
     </section>
 
-    <!-- CVE Showcase -->
-    <section class="cve-showcase">
-        <div class="container">
-            <h2 class="section-title">Published CVE Research</h2>
-            <p class="section-subtitle">Federally-assigned vulnerability identifiers validating our research methodology</p>
-            
-            <div class="cve-grid">
-                <div class="cve-card">
-                    <div class="cve-header">
-                        <span class="cve-id">CVE-2025-70062</span>
-                        <span class="severity critical">Critical</span>
-                    </div>
-                    <h3>Cross-Site Request Forgery</h3>
-                    <p>PHPGurukul Hospital Management System v4.0</p>
-                    <p class="cve-description">
-                        Unauthenticated attacker can force authenticated users to perform privileged actions, 
-                        including creating administrative accounts, through crafted CSRF payloads.
-                    </p>
-                    <div class="cve-links">
-                        <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory</a>
-                        <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">Technical Details</a>
-                    </div>
-                </div>
-
-                <div class="cve-card">
-                    <div class="cve-header">
-                        <span class="cve-id">CVE-2025-70063</span>
-                        <span class="severity high">High</span>
-                    </div>
-                    <h3>Insecure Direct Object Reference</h3>
-                    <p>PHPGurukul Hospital Management System v4.0</p>
-                    <p class="cve-description">
-                        Unauthorized access to patient medical records (PHI) through predictable parameter 
-                        manipulation, bypassing access controls entirely.
-                    </p>
-                    <div class="cve-links">
-                        <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory</a>
-                        <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">Technical Details</a>
-                    </div>
-                </div>
-
-                <div class="cve-card">
-                    <div class="cve-header">
-                        <span class="cve-id">CVE-2025-70064</span>
-                        <span class="severity critical">Critical</span>
-                    </div>
-                    <h3>Privilege Escalation (RBAC Bypass)</h3>
-                    <p>PHPGurukul Hospital Management System v4.0</p>
-                    <p class="cve-description">
-                        Patient-level users can access full administrative dashboard without authentication 
-                        through role-based access control failure.
-                    </p>
-                    <div class="cve-links">
-                        <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory</a>
-                        <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">Technical Details</a>
-                    </div>
-                </div>
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Federal CVE Assignments</div>
             </div>
-
-            <div class="cve-footer">
-                <p>8 additional CVE submissions pending MITRE review</p>
-                <a href="research.html" class="btn btn-primary">Read Full Research</a>
+            <div class="stat-item">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Vulnerabilities Submitted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">71%</div>
+                <div class="stat-label">CVE Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Packet Storm Publications</div>
             </div>
         </div>
     </section>
 
-    <!-- Methodology Section -->
-    <section class="methodology">
-        <div class="container">
-            <h2 class="section-title">AI-Augmented Architectural Analysis</h2>
-            <p class="section-subtitle">Why our methodology finds vulnerabilities automated scanners miss</p>
-            
-            <div class="method-grid">
-                <div class="method-card">
-                    <div class="method-icon">01</div>
-                    <h3>Architecture Review</h3>
-                    <p>
-                        We use AI (Gemini, Claude) to analyze entire codebases for architectural patterns, 
-                        not just syntax errors. This reveals business logic assumptions that become vulnerabilities.
-                    </p>
-                </div>
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">FEDERAL RECOGNITION</span>
+            <h2 class="section-title">10 Published CVE Assignments</h2>
+            <p class="section-subtitle">Discovered across healthcare and financial systems using AI-augmented architectural analysis</p>
+        </div>
 
-                <div class="method-card">
-                    <div class="method-icon">02</div>
-                    <h3>Assumption Testing</h3>
-                    <p>
-                        Legacy systems assume perimeter security, session validation, and user honesty. 
-                        We systematically challenge every assumption to find critical flaws.
-                    </p>
+        <div class="cve-grid">
+            <!-- Original 3 CVEs -->
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2025-70062</span>
+                    <span class="severity-badge severity-high">HIGH</span>
                 </div>
-
-                <div class="method-card">
-                    <div class="method-icon">03</div>
-                    <h3>Manual Verification</h3>
-                    <p>
-                        AI suggests potential vulnerabilities; we verify with manual testing, proof-of-concept 
-                        development, and exploit chains. Only verified findings are reported.
-                    </p>
+                <h3>Cross-Site Request Forgery</h3>
+                <p>PHPGurukul HMS v4.0 - Missing anti-CSRF tokens allowing privileged account creation via forged requests</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2025-70062" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213711" target="_blank" class="cve-link">PacketStorm</a>
                 </div>
+            </div>
 
-                <div class="method-card">
-                    <div class="method-icon">04</div>
-                    <h3>Responsible Disclosure</h3>
-                    <p>
-                        We coordinate with MITRE for CVE assignments, notify vendors, and publish research 
-                        only after appropriate timelines. Ethics first, always.
-                    </p>
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2025-70063</span>
+                    <span class="severity-badge severity-high">HIGH</span>
+                </div>
+                <h3>Insecure Direct Object Reference</h3>
+                <p>PHPGurukul HMS v4.0 - Patient medical records exposed via URL manipulation. Critical HIPAA violation.</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2025-70063" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213711" target="_blank" class="cve-link">PacketStorm</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2025-70064</span>
+                    <span class="severity-badge severity-critical">CRITICAL</span>
+                </div>
+                <h3>Privilege Escalation (RBAC Bypass)</h3>
+                <p>PHPGurukul HMS v4.0 - Complete authentication bypass allowing patient users to access admin dashboard</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2025-70064" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213711" target="_blank" class="cve-link">PacketStorm</a>
+                </div>
+            </div>
+
+            <!-- NEW 7 CVEs (Feb 23rd) -->
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26495</span>
+                    <span class="severity-badge severity-critical">CRITICAL</span>
+                </div>
+                <h3>SQL Injection (Auth Bypass)</h3>
+                <p>PHPGurukul HMS v4.0 - SQL injection in admin login bypassing authentication entirely</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26495" target="_blank" class="cve-link">CVE Record</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26497</span>
+                    <span class="severity-badge severity-high">HIGH</span>
+                </div>
+                <h3>Stored Cross-Site Scripting</h3>
+                <p>PHPGurukul HMS v4.0 - Persistent XSS in user profile enabling session hijacking</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26497" target="_blank" class="cve-link">CVE Record</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26499</span>
+                    <span class="severity-badge severity-high">HIGH</span>
+                </div>
+                <h3>IDOR (Admin Dashboard)</h3>
+                <p>SourceCodester OBMS v1.0 - Unauthorized access to administrative dashboards via direct object references</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26499" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26500</span>
+                    <span class="severity-badge severity-critical">CRITICAL</span>
+                </div>
+                <h3>Authenticated SQL Injection (RCE)</h3>
+                <p>SourceCodester OBMS v1.0 - SQL injection in transfer.php leading to remote code execution</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26500" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26501</span>
+                    <span class="severity-badge severity-critical">CRITICAL</span>
+                </div>
+                <h3>Integer Overflow (Financial Logic)</h3>
+                <p>SourceCodester OBMS v1.0 - Integer overflow in amount parameter enabling unlimited fund transfers</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26501" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26502</span>
+                    <span class="severity-badge severity-critical">CRITICAL</span>
+                </div>
+                <h3>Race Condition (Double Spending)</h3>
+                <p>SourceCodester OBMS v1.0 - Race condition in transfer.php enabling double-spending attacks</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26502" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
+                </div>
+            </div>
+
+            <div class="cve-card">
+                <div class="cve-header">
+                    <span class="cve-id">CVE-2026-26503</span>
+                    <span class="severity-badge severity-high">HIGH</span>
+                </div>
+                <h3>Stored XSS (Admin Takeover)</h3>
+                <p>SourceCodester OBMS v1.0 - Persistent XSS in feedback.php enabling administrative session hijacking</p>
+                <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26503" target="_blank" class="cve-link">CVE Record</a>
+                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Penetration Testing</h3>
-                    <p>
-                        Web application, API, and network security assessments focusing on business logic flaws 
-                        and architectural failures, not just automated scan results.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <h3>Vulnerability Research</h3>
-                    <p>
-                        Deep-dive source code analysis and CVE coordination for organizations that need federal 
-                        validation of security findings.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <h3>GRC Advisory</h3>
-                    <p>
-                        Risk assessment, security policy development, and compliance gap analysis that translates 
-                        technical vulnerabilities into business impact.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <h3>Security Training</h3>
-                    <p>
-                        Teaching the zero-cost path to CVE credentials. We train students and early-career 
-                        professionals in systematic vulnerability research.
-                    </p>
-                </div>
-            </div>
+        <div class="quote-section">
+            <blockquote>"Nice research! You drove a bus through this..."</blockquote>
+            <cite>— Packet Storm Security Staff</cite>
         </div>
     </section>
 
-    <!-- External Validation -->
-    <section class="validation">
-        <div class="container">
-            <h2 class="section-title">External Validation</h2>
-            
-            <div class="validation-grid">
-                <div class="validation-card">
-                    <h3>Packet Storm Security</h3>
-                    <p class="quote">
-                        "Nice research! You drove a bus through this..."
-                    </p>
-                    <p class="source">— PacketStorm Staff Review</p>
-                    <a href="https://packetstorm.news/files/author/31694" target="_blank" class="validation-link">
-                        View Publications →
-                    </a>
-                </div>
-
-                <div class="validation-card">
-                    <h3>Federal CVE Program</h3>
-                    <p class="quote">
-                        3 CVE assignments (CVE-2025-70062, CVE-2025-70063, CVE-2025-70064) validating 
-                        vulnerability research quality and disclosure process.
-                    </p>
-                    <p class="source">— MITRE Corporation</p>
-                </div>
-
-                <div class="validation-card">
-                    <h3>Industry Certifications</h3>
-                    <p class="quote">
-                        ISC2 CC, CRTOM, CCEP, Google Cybersecurity, LetsDefend DFIR/Malware/SOC, 
-                        TCM Security PEH & OSINT
-                    </p>
-                    <a href="about.html" class="validation-link">
-                        View Full Credentials →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Need Architectural Security Analysis?</h2>
-            <p>
-                We specialize in finding critical vulnerabilities in legacy healthcare and financial systems. 
-                If automated scanners aren't finding the flaws that matter, let's talk.
-            </p>
-            <a href="contact.html" class="btn btn-primary-light">Schedule Consultation</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Syntropy Security</h3>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Syntropy Security</h4>
                     <p>AI-Augmented Vulnerability Research</p>
+                    <p>10 Federal CVE Assignments</p>
                     <p>Mumbai, Maharashtra, India</p>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Research</h4>
                     <ul>
-                        <li><a href="https://github.com/Sanka1pp" target="_blank">GitHub Repositories</a></li>
-                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">PacketStorm Publications</a></li>
-                        <li><a href="research.html">CVE Documentation</a></li>
+                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">Packet Storm</a></li>
+                        <li><a href="https://github.com/Sanka1pp" target="_blank">GitHub</a></li>
+                        <li><a href="research.html">CVE Portfolio</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Connect</h4>
                     <ul>
                         <li><a href="https://www.linkedin.com/in/sankalp-hanwate-189598284/" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://www.linkedin.com/company/syntropy-security/" target="_blank">Company Page</a></li>
-                        <li><a href="contact.html">Contact Form</a></li>
+                        <li><a href="https://www.linkedin.com/company/syntropy-security" target="_blank">Company Page</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <p class="legal-text">
-                        All research conducted ethically with responsible disclosure practices. 
-                        CVE assignments validated by MITRE Corporation.
-                    </p>
-                </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2025 Syntropy Security. All rights reserved.</p>
-                <p>Founder: Sankalp Devidas Hanwate | ISC2 CC | CRTOM | CCEP</p>
+                <p>&copy; 2026 Syntropy Security. 10 Federal CVE Assignments. Professional vulnerability research and security consulting.</p>
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
