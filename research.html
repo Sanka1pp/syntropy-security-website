@@ -3,362 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CVE Research - Detailed documentation of CVE-2025-70062, CVE-2025-70063, CVE-2025-70064 discovered by Syntropy Security">
-    <title>CVE Research | Syntropy Security</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Research | Syntropy Security</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0e1a; color: #e5e7eb; line-height: 1.7; }
+        nav { background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #374151; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: monospace; font-size: 1.3rem; font-weight: 700; color: #fbbf24; }
+        nav ul { display: flex; gap: 2rem; list-style: none; }
+        nav a { color: #9ca3af; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #e5e7eb; }
+        .hero { background: linear-gradient(135deg, #0a0e1a 0%, #1e3a8a 50%, #312e81 100%); padding: 4rem 2rem; text-align: center; }
+        h1 { font-size: 3rem; font-weight: 900; margin-bottom: 1rem; color: #f9fafb; }
+        .subtitle { font-size: 1.2rem; color: #9ca3af; }
+        article { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+        article h2 { font-size: 2rem; margin: 2.5rem 0 1rem; color: #f9fafb; }
+        article p { margin-bottom: 1.5rem; color: #9ca3af; font-size: 1.05rem; }
+        footer { background: #111827; border-top: 1px solid #374151; padding: 3rem 2rem 1.5rem; margin-top: 4rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-col h4 { color: #fbbf24; margin-bottom: 1rem; }
+        .footer-col p, .footer-col a { color: #9ca3af; text-decoration: none; }
+        .footer-col a:hover { color: #3b82f6; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid #374151; color: #9ca3af; }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav>
         <div class="container">
-            <div class="nav-brand">
-                <h1>SYNTROPY SECURITY</h1>
+            <div class="nav-content">
+                <div class="logo">SYNTROPY_SEC</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html" class="active">Research</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
         </div>
     </nav>
 
-    <section class="page-header">
+    <section class="hero">
         <div class="container">
-            <h1>CVE Research Documentation</h1>
-            <p>How We Found 11 Vulnerabilities in 30 Days Using AI-Augmented Analysis</p>
+            <h1>How I Found 14 Zero-Days Over Christmas</h1>
+            <p class="subtitle">Technical analysis of 10 federal CVE assignments</p>
         </div>
     </section>
 
-    <section class="research-content">
+    <article>
+        <h2>Executive Summary</h2>
+        <p>Over Christmas weekend 2025, I discovered 14 critical vulnerabilities across two legacy systems using AI-augmented analysis. Ten received federal CVE assignments from MITRE (71% success rate). This report details the methodology and findings.</p>
+
+        <h2>The Results</h2>
+        <p><strong>CVE Assignments Received:</strong></p>
+        <p>• CVE-2025-70062 (Cross-Site Request Forgery)<br>
+        • CVE-2025-70063 (Insecure Direct Object Reference)<br>
+        • CVE-2025-70064 (Privilege Escalation)<br>
+        • CVE-2026-26495 (SQL Injection - Auth Bypass)<br>
+        • CVE-2026-26497 (Stored Cross-Site Scripting)<br>
+        • CVE-2026-26499 (IDOR - Admin Dashboard)<br>
+        • CVE-2026-26500 (Authenticated SQL Injection → RCE)<br>
+        • CVE-2026-26501 (Integer Overflow)<br>
+        • CVE-2026-26502 (Race Condition - Double Spending)<br>
+        • CVE-2026-26503 (Stored XSS - Admin Takeover)</p>
+
+        <h2>The Methodology</h2>
+        <p>Traditional pentesting is 5% exploitation and 95% reconnaissance. I inverted this using AI-augmented architectural analysis.</p>
+
+        <p><strong>Phase 1: Target Selection</strong><br>
+        I targeted legacy PHP applications in healthcare and finance—systems abandoned by vendors but still deployed in critical infrastructure.</p>
+
+        <p><strong>Phase 2: AI-Augmented Analysis</strong><br>
+        I uploaded entire codebases to Claude and Gemini with a single prompt: "Analyze for architectural security failures." Within minutes, the AI identified 40+ potential vulnerabilities.</p>
+
+        <p><strong>Phase 3: Manual Verification</strong><br>
+        I manually verified each finding, developed proof-of-concept exploits, and documented the attack chains.</p>
+
+        <p><strong>Phase 4: Responsible Disclosure</strong><br>
+        I coordinated with MITRE for CVE assignments and published advisories through Packet Storm Security.</p>
+
+        <h2>Key Findings</h2>
+        <p>The most critical vulnerabilities weren't in code—they were in unvalidated assumptions:</p>
+        <p>• Applications assumed users would only request their own data (IDOR)<br>
+        • Applications assumed session variables came from legitimate sources (Privilege Escalation)<br>
+        • Applications assumed requests were intentional (CSRF)<br>
+        • Applications assumed negative values were impossible (Integer Overflow)</p>
+
+        <h2>Published Research</h2>
+        <p>→ <a href="https://packetstorm.news/files/id/213711" target="_blank" style="color: #3b82f6;">PacketStorm Advisory #213711</a><br>
+        → <a href="https://packetstorm.news/files/id/213712" target="_blank" style="color: #3b82f6;">PacketStorm Advisory #213712</a><br>
+        → <a href="https://github.com/Sanka1pp" target="_blank" style="color: #3b82f6;">GitHub Technical Documentation</a></p>
+    </article>
+
+    <footer>
         <div class="container">
-            <div class="research-intro">
-                <h2>The Christmas 2025 Research Sprint</h2>
-                <p>
-                    Over the 2025 Christmas weekend, I discovered 11 critical vulnerabilities across two legacy 
-                    healthcare and financial systems. Three received federal CVE assignments. Eight are pending 
-                    MITRE review. This research was published by Packet Storm Security with staff endorsement.
-                </p>
-                <p>
-                    This wasn't luck. It was systematic architectural analysis using AI augmentation. Here's 
-                    the complete methodology and findings.
-                </p>
-            </div>
-
-            <div class="methodology-detailed">
-                <h2>The AI-Augmented Methodology</h2>
-                
-                <div class="method-step">
-                    <h3>Step 1: Target Selection (The "Abandonware Advantage")</h3>
-                    <p>
-                        Most security researchers target actively-maintained software with bug bounty programs. 
-                        I target legacy systems—infrastructure that's too critical to replace but too complex 
-                        to secure properly.
-                    </p>
-                    <p><strong>Why this works:</strong></p>
-                    <ul>
-                        <li>Legacy PHP applications built before modern security frameworks existed</li>
-                        <li>Healthcare/financial systems where "it works" means "don't touch it"</li>
-                        <li>No active security teams reviewing code</li>
-                        <li>Downloaded thousands of times, embedded in real infrastructure</li>
-                    </ul>
-                    <p><strong>Target Profile:</strong> PHPGurukul Hospital Management System v4.0</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Syntropy Security</h4>
+                    <p>10 Federal CVE Assignments</p>
+                    <p>Mumbai, India</p>
                 </div>
-
-                <div class="method-step">
-                    <h3>Step 2: AI-Powered Code Analysis</h3>
-                    <p>
-                        I feed the entire codebase to Gemini and Claude with this prompt:
-                    </p>
-                    <div class="code-block">
-                        <code>
-"Analyze this PHP application for architectural security failures. Focus on:<br>
-1. Authentication/authorization bypass opportunities<br>
-2. Business logic flaws (race conditions, state manipulation)<br>
-3. IDOR vulnerabilities in database queries<br>
-4. CSRF potential in state-changing operations<br>
-5. SQL injection in dynamic queries<br><br>
-
-Provide specific file paths and line numbers for each finding."
-                        </code>
-                    </div>
-                    <p><strong>Why AI is critical:</strong></p>
-                    <ul>
-                        <li>Reviews 10,000+ lines of code in minutes</li>
-                        <li>Identifies patterns humans miss (nested conditionals, logic branches)</li>
-                        <li>Suggests exploit chains by connecting vulnerabilities</li>
-                    </ul>
-                </div>
-
-                <div class="method-step">
-                    <h3>Step 3: Manual Verification (The 95% Effort)</h3>
-                    <p>
-                        AI finds potential vulnerabilities. I verify every single one manually:
-                    </p>
-                    <ul>
-                        <li>Set up local testing environment (XAMPP, MySQL)</li>
-                        <li>Reproduce the vulnerability with proof-of-concept code</li>
-                        <li>Test exploit chains (can IDOR lead to privilege escalation?)</li>
-                        <li>Document with screenshots, HTTP requests, database queries</li>
-                        <li>Measure real-world impact (PHI exposure, financial manipulation)</li>
-                    </ul>
-                    <p>
-                        <strong>Critical principle:</strong> 5% of time is hacking. 95% is documentation, 
-                        verification, and bureaucracy.
-                    </p>
-                </div>
-
-                <div class="method-step">
-                    <h3>Step 4: Responsible Disclosure</h3>
-                    <p><strong>The Process:</strong></p>
-                    <ol>
-                        <li>Attempt vendor contact (email, GitHub issues, LinkedIn)</li>
-                        <li>Wait 90 days for response (industry standard)</li>
-                        <li>If no response (common with abandonware), proceed to public disclosure</li>
-                        <li>Submit to MITRE for CVE assignment</li>
-                        <li>Publish to PacketStorm, GitHub with full technical documentation</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="cve-detailed">
-                <h2>Published CVEs (Federal Validation)</h2>
-
-                <div class="cve-detail-card">
-                    <div class="cve-detail-header">
-                        <h3>CVE-2025-70062: Cross-Site Request Forgery (CSRF)</h3>
-                        <span class="severity critical">CVSS 7.1 - Critical</span>
-                    </div>
-                    
-                    <div class="cve-detail-body">
-                        <h4>Vulnerability Description</h4>
-                        <p>
-                            The PHPGurukul Hospital Management System v4.0 allows unauthenticated attackers to 
-                            perform privileged actions on behalf of authenticated users through CSRF attacks.
-                        </p>
-
-                        <h4>Technical Details</h4>
-                        <p><strong>Affected Endpoint:</strong> <code>/hms/doctor/add-doctor.php</code></p>
-                        <p><strong>Vulnerability Type:</strong> Missing CSRF tokens on state-changing operations</p>
-                        
-                        <p><strong>Attack Vector:</strong></p>
-                        <ul>
-                            <li>Attacker crafts malicious HTML page with hidden form</li>
-                            <li>Victim visits attacker's page while authenticated to HMS</li>
-                            <li>Form auto-submits, creating new administrative account</li>
-                            <li>Attacker gains persistent admin access</li>
-                        </ul>
-
-                        <h4>Impact</h4>
-                        <ul>
-                            <li>Unauthorized account creation with administrative privileges</li>
-                            <li>Complete compromise of hospital management system</li>
-                            <li>Access to patient medical records (PHI breach under HIPAA)</li>
-                        </ul>
-
-                        <h4>References</h4>
-                        <p>
-                            <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory #213711</a> | 
-                            <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">GitHub PoC</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="cve-detail-card">
-                    <div class="cve-detail-header">
-                        <h3>CVE-2025-70063: Insecure Direct Object Reference (IDOR)</h3>
-                        <span class="severity high">CVSS 7.5 - High</span>
-                    </div>
-                    
-                    <div class="cve-detail-body">
-                        <h4>Vulnerability Description</h4>
-                        <p>
-                            Predictable patient ID parameters allow unauthorized access to medical records 
-                            without authentication or authorization checks.
-                        </p>
-
-                        <h4>Technical Details</h4>
-                        <p><strong>Affected Endpoint:</strong> <code>/hms/view-patient.php?id=[PATIENT_ID]</code></p>
-                        <p><strong>Vulnerability Type:</strong> Missing access control validation</p>
-                        
-                        <p><strong>Attack Vector:</strong></p>
-                        <ul>
-                            <li>Patient IDs are sequential integers (1, 2, 3...)</li>
-                            <li>No session validation on medical record viewing</li>
-                            <li>Attacker enumerates IDs to access all patient records</li>
-                        </ul>
-
-                        <h4>Impact</h4>
-                        <ul>
-                            <li>Unauthorized access to Protected Health Information (PHI)</li>
-                            <li>HIPAA violation - patient privacy breach</li>
-                            <li>Data exfiltration of entire patient database possible</li>
-                        </ul>
-
-                        <h4>References</h4>
-                        <p>
-                            <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory #213711</a> | 
-                            <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">GitHub PoC</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="cve-detail-card">
-                    <div class="cve-detail-header">
-                        <h3>CVE-2025-70064: Privilege Escalation (RBAC Bypass)</h3>
-                        <span class="severity critical">CVSS 9.1 - Critical</span>
-                    </div>
-                    
-                    <div class="cve-detail-body">
-                        <h4>Vulnerability Description</h4>
-                        <p>
-                            Patient-level users can access full administrative dashboard without authentication 
-                            through role-based access control failure.
-                        </p>
-
-                        <h4>Technical Details</h4>
-                        <p><strong>Affected Component:</strong> Session management and role validation</p>
-                        <p><strong>Vulnerability Type:</strong> Improper access control</p>
-                        
-                        <p><strong>Attack Vector:</strong></p>
-                        <ul>
-                            <li>Patient authenticates with legitimate credentials</li>
-                            <li>Session contains role information but lacks validation</li>
-                            <li>Direct navigation to <code>/admin/dashboard.php</code> succeeds</li>
-                            <li>Full administrative functions accessible</li>
-                        </ul>
-
-                        <h4>Impact</h4>
-                        <ul>
-                            <li>Complete system compromise from patient-level account</li>
-                            <li>Ability to modify medical records, appointments, billing</li>
-                            <li>Data deletion, user account manipulation</li>
-                            <li>Horizontal privilege escalation to other patient records</li>
-                        </ul>
-
-                        <h4>Root Cause</h4>
-                        <p>
-                            Session validation checks user authentication but not role authorization. 
-                            The application assumes URL-based access control is sufficient.
-                        </p>
-
-                        <h4>References</h4>
-                        <p>
-                            <a href="https://packetstorm.news/files/id/213711" target="_blank">PacketStorm Advisory #213711</a> | 
-                            <a href="https://github.com/Sanka1pp/PHPGurukul-HMS-CVE" target="_blank">GitHub PoC</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pending-cves">
-                <h2>Additional Vulnerabilities (Pending CVE Review)</h2>
-                <p>8 additional critical vulnerabilities have been submitted to MITRE for CVE assignment:</p>
-                
-                <div class="pending-grid">
-                    <div class="pending-card">
-                        <h4>Unauthenticated SQL Injection</h4>
-                        <p>Remote code execution through SQL injection in login form</p>
-                        <span class="status">MITRE Request ID: 1976782</span>
-                    </div>
-
-                    <div class="pending-card">
-                        <h4>Authentication Bypass (SQLi)</h4>
-                        <p>Complete authentication bypass via SQL injection</p>
-                        <span class="status">MITRE Request ID: 1976784</span>
-                    </div>
-
-                    <div class="pending-card">
-                        <h4>Stored XSS (Session Hijacking)</h4>
-                        <p>Account takeover through persistent XSS payloads</p>
-                        <span class="status">MITRE Request ID: 1976826</span>
-                    </div>
-
-                    <div class="pending-card">
-                        <h4>RCE via Authenticated SQLi</h4>
-                        <p>Banking system: SQL injection leading to web shell upload</p>
-                        <span class="status">MITRE Request ID: 1976875</span>
-                    </div>
-
-                    <div class="pending-card">
-                        <h4>Integer Overflow (Financial Logic)</h4>
-                        <p>Negative balance manipulation through integer overflow</p>
-                        <span class="status">MITRE Request ID: 1976877</span>
-                    </div>
-
-                    <div class="pending-card">
-                        <h4>Race Condition (Double Spending)</h4>
-                        <p>Multiple simultaneous withdrawals from same account</p>
-                        <span class="status">MITRE Request ID: 1976881</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="research-conclusion">
-                <h2>Key Takeaways</h2>
-                <div class="takeaway-grid">
-                    <div class="takeaway-card">
-                        <h3>1. Legacy Systems Are Gold Mines</h3>
-                        <p>
-                            Abandonware deployed in real infrastructure offers more learning value than 
-                            actively-defended bug bounty targets.
-                        </p>
-                    </div>
-
-                    <div class="takeaway-card">
-                        <h3>2. AI Accelerates Discovery, Not Replacement</h3>
-                        <p>
-                            AI finds patterns. Humans verify impact. The combination is exponentially 
-                            more effective than either alone.
-                        </p>
-                    </div>
-
-                    <div class="takeaway-card">
-                        <h3>3. Documentation > Exploitation</h3>
-                        <p>
-                            Finding a vulnerability takes hours. Documenting it properly for CVE assignment 
-                            takes days. Master the bureaucracy.
-                        </p>
-                    </div>
-
-                    <div class="takeaway-card">
-                        <h3>4. Zero Cost, Maximum Impact</h3>
-                        <p>
-                            This research cost ₹0. No expensive tools, no bug bounty fees, no certifications 
-                            required. Just methodology and discipline.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cta-section">
-                <h2>Want to Learn This Methodology?</h2>
-                <p>
-                    I'm teaching students how to find their first CVE within 90 days using this exact approach. 
-                    No gatekeeping. No expensive courses. Just systematic research.
-                </p>
-                <a href="contact.html" class="btn btn-primary">Get in Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Syntropy Security</h3>
-                    <p>AI-Augmented Vulnerability Research</p>
-                </div>
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Research</h4>
                     <ul>
+                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">Packet Storm</a></li>
                         <li><a href="https://github.com/Sanka1pp" target="_blank">GitHub</a></li>
-                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">PacketStorm</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/sankalp-hanwate-189598284/" target="_blank">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Syntropy Security. All rights reserved.</p>
+                <p>&copy; 2026 Syntropy Security</p>
             </div>
         </div>
     </footer>
