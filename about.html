@@ -3,241 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Syntropy Security - Founded by Sankalp Devidas Hanwate, ISC2 CC, CRTOM, CCEP certified security researcher">
     <title>About | Syntropy Security</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0e1a; color: #e5e7eb; line-height: 1.7; }
+        nav { background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #374151; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: monospace; font-size: 1.3rem; font-weight: 700; color: #fbbf24; }
+        nav ul { display: flex; gap: 2rem; list-style: none; }
+        nav a { color: #9ca3af; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #e5e7eb; }
+        .hero { background: linear-gradient(135deg, #0a0e1a 0%, #1e3a8a 50%, #312e81 100%); padding: 4rem 2rem; text-align: center; }
+        h1 { font-size: 3rem; font-weight: 900; margin-bottom: 1rem; color: #f9fafb; }
+        .subtitle { font-size: 1.2rem; color: #9ca3af; }
+        article { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+        article h2 { font-size: 2rem; margin: 2.5rem 0 1rem; color: #f9fafb; }
+        article p { margin-bottom: 1.5rem; color: #9ca3af; font-size: 1.05rem; }
+        .highlight { background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05)); border-left: 4px solid #fbbf24; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+        footer { background: #111827; border-top: 1px solid #374151; padding: 3rem 2rem 1.5rem; margin-top: 4rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-col h4 { color: #fbbf24; margin-bottom: 1rem; }
+        .footer-col p, .footer-col a { color: #9ca3af; text-decoration: none; }
+        .footer-col a:hover { color: #3b82f6; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid #374151; color: #9ca3af; }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav>
         <div class="container">
-            <div class="nav-brand">
-                <h1>SYNTROPY SECURITY</h1>
+            <div class="nav-content">
+                <div class="logo">SYNTROPY_SEC</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
         </div>
     </nav>
 
-    <section class="page-header">
+    <section class="hero">
         <div class="container">
-            <h1>About Syntropy Security</h1>
-            <p>The Story of Building Defense Through Offensive Insight</p>
+            <h1>The Architect</h1>
+            <p class="subtitle">From enterprise innovation to offensive security mastery</p>
         </div>
     </section>
 
-    <section class="about-content">
-        <div class="container">
-            <div class="founder-story">
-                <h2>The Origin Story</h2>
-                <p>
-                    My path to cybersecurity wasn't traditional. It started at ICICI Bank, where I was handpicked 
-                    by the President/CTO from over 1,000 employees to join an elite Technology Innovation Project Group.
-                </p>
-                <p>
-                    There, I built the bank's first mobile application—a financial calculator launched on Android's 
-                    then-new Play Store. I presented to the Board of Directors. I was 25 years old and considered 
-                    one of the company's most promising talents.
-                </p>
-                <p>
-                    Then came the corporate restructuring. New leadership. Different vision. And my termination in 2011.
-                </p>
-                <p>
-                    Most people would see that as failure. I saw it as liberation.
-                </p>
-            </div>
+    <article>
+        <h2>Origin Story</h2>
+        <p>My career began in the backend infrastructure of one of India's largest banks. Five years managing production environments, leading deployment teams, solving multi-million dollar infrastructure crises.</p>
 
-            <div class="the-pivot">
-                <h2>The Deliberate Pivot (2011-2024)</h2>
-                <p>
-                    I made a choice: reject the corporate path and master offensive security from the ground up.
-                </p>
-                <p>
-                    For the next 15 years, I operated as an independent security researcher. Not as a job title—as 
-                    a lifestyle. Thousands of hours on HackTheBox. Hundreds of systems compromised in lab environments. 
-                    Dozens of bug bounty programs analyzed. Continuous certification acquisition. Relentless, 
-                    self-directed mastery.
-                </p>
-                <p>
-                    This wasn't a "career gap." It was a deep dive into the practical realities of cybersecurity 
-                    that you can't learn in corporate environments or expensive bootcamps.
-                </p>
-                <p>
-                    I learned how systems break because I broke them—methodically, repeatedly, obsessively.
-                </p>
-            </div>
+        <p>I was handpicked by the President/CTO from 1,000+ employees to join an elite innovation team. As the sole technology representative, I architected the bank's first mobile application—establishing its Google Play Store presence and presenting directly to the Board of Directors.</p>
 
-            <div class="syntropy-founding">
-                <h2>Founding Syntropy Security (2025)</h2>
-                <p>
-                    In December 2025, I discovered 11 critical vulnerabilities over the Christmas weekend. Three 
-                    received federal CVE assignments. Eight are pending MITRE review. PacketStorm Security published 
-                    my research with staff endorsement.
-                </p>
-                <p>
-                    That was the proof: my methodology worked at scale.
-                </p>
-                <p>
-                    Syntropy Security is the formalization of 15 years of self-directed research. We specialize in 
-                    what I do best: finding architectural failures in legacy systems that everyone assumes are secure.
-                </p>
-                <p>
-                    We use AI not as a replacement for expertise, but as a force multiplier. We target healthcare 
-                    and financial infrastructure—systems too critical to replace and too complex to secure with 
-                    conventional approaches.
-                </p>
-            </div>
+        <p>A corporate restructuring ended my tenure. This wasn't a setback—it was a catalyst.</p>
 
-            <div class="certifications">
-                <h2>Professional Credentials</h2>
-                <p>
-                    Acquired through continuous learning during 2011-2025 period and maintained with ongoing education:
-                </p>
-                
-                <div class="cert-grid">
-                    <div class="cert-card">
-                        <h3>ISC2 Certified in Cybersecurity (CC)</h3>
-                        <p>Industry-recognized foundational certification covering security principles, access controls, 
-                        network security, and incident response.</p>
-                    </div>
+        <h2>The Deep Dive (2011-2024)</h2>
+        <p>For over a decade, I operated as an independent security specialist. Instead of climbing the corporate ladder, I descended into the technical trenches.</p>
 
-                    <div class="cert-card">
-                        <h3>Certified Red Team Operations Manager (CRTOM)</h3>
-                        <p>Specialized certification in red team operations, adversary simulation, and offensive 
-                        security management.</p>
-                    </div>
+        <p>300+ HackTheBox machine compromises. Bug bounty programs on HackerOne and BugCrowd. Private red team labs. Continuous certifications. Independent security consulting under NDA.</p>
 
-                    <div class="cert-card">
-                        <h3>Certified Cloud Ethical Penetration (CCEP)</h3>
-                        <p>Cloud-focused penetration testing certification covering AWS, Azure, GCP security 
-                        assessment methodologies.</p>
-                    </div>
-
-                    <div class="cert-card">
-                        <h3>Google Cybersecurity Professional Certificate</h3>
-                        <p>8-course specialization covering security foundations, risk management, network hardening, 
-                        Linux, Python automation, and incident response.</p>
-                    </div>
-
-                    <div class="cert-card">
-                        <h3>LetsDefend Certifications</h3>
-                        <p>SOC Analyst, Malware Analyst, and Digital Forensics & Incident Response (DFIR) 
-                        specialized training.</p>
-                    </div>
-
-                    <div class="cert-card">
-                        <h3>TCM Security Academy</h3>
-                        <p>Practical Ethical Hacking, OSINT Fundamentals, and External Pentest Playbook 
-                        comprehensive training.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="philosophy">
-                <h2>Our Philosophy</h2>
-                
-                <div class="philosophy-points">
-                    <div class="philosophy-card">
-                        <h3>1. Defense Through Offense</h3>
-                        <p>
-                            You can't build resilient systems without understanding how they break. We bring the 
-                            attacker's mindset to defensive strategy.
-                        </p>
-                    </div>
-
-                    <div class="philosophy-card">
-                        <h3>2. Architecture Over Syntax</h3>
-                        <p>
-                            Most vulnerabilities aren't in code—they're in assumptions. We analyze business logic, 
-                            not just run automated scanners.
-                        </p>
-                    </div>
-
-                    <div class="philosophy-card">
-                        <h3>3. AI as Force Multiplier</h3>
-                        <p>
-                            AI accelerates discovery. Humans verify impact. We combine both for exponentially 
-                            better results than either alone.
-                        </p>
-                    </div>
-
-                    <div class="philosophy-card">
-                        <h3>4. Zero Gatekeeping</h3>
-                        <p>
-                            Cybersecurity expertise shouldn't require expensive certifications. We teach our methodology 
-                            openly to students and early-career professionals.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mission">
-                <h2>Our Mission</h2>
-                <p class="mission-statement">
-                    Democratize vulnerability research. Prove that systematic methodology beats expensive certifications. 
-                    Help students earn permanent federal CVE credentials with zero cost—just discipline and open-source tools.
-                </p>
-                <p>
-                    The cybersecurity industry has convinced an entire generation that career success requires $3,000+ 
-                    certifications. We're proving there's an alternative path.
-                </p>
-            </div>
-
-            <div class="work-with-us">
-                <h2>Work With Us</h2>
-                <p>
-                    Syntropy Security offers:
-                </p>
-                <ul>
-                    <li>Penetration testing focused on business logic and architectural failures</li>
-                    <li>Vulnerability research and CVE coordination</li>
-                    <li>GRC advisory translating technical findings into business risk</li>
-                    <li>Security training on AI-augmented vulnerability discovery</li>
-                </ul>
-                <p>
-                    If you need architectural security analysis for legacy healthcare or financial systems, 
-                    or want to learn the CVE discovery methodology, let's connect.
-                </p>
-                <a href="contact.html" class="btn btn-primary">Get in Touch</a>
-            </div>
+        <div class="highlight">
+            <p style="font-style: italic; color: #e5e7eb;"><strong>This wasn't a gap. It was a decade-long deep dive into understanding how systems break—not theoretically, but practically.</strong></p>
         </div>
-    </section>
 
-    <footer class="footer">
+        <h2>The Breakthrough</h2>
+        <p>Over Christmas weekend 2025, I discovered 14 vulnerabilities using AI-augmented methodology. Ten received federal CVE assignments (71% success rate—more than double the industry average).</p>
+
+        <p>Published by Packet Storm Security. Staff praised the work as "driving a bus through this."</p>
+
+        <h2>Why Syntropy Security</h2>
+        <p>The name represents order emerging from chaos. Legacy systems in healthcare and finance are chaotic—built before security frameworks matured, making dangerous assumptions about user behavior.</p>
+
+        <p>Syntropy Security exists to find architectural failures before attackers do. We don't run automated scanners and deliver 500-page reports. We analyze business logic, identify unvalidated assumptions, and systematically break systems.</p>
+
+        <h2>The Mission</h2>
+        <p>Democratizing vulnerability research. The cybersecurity industry has convinced students that career success requires expensive certifications. I'm proving there's an alternative path.</p>
+
+        <p>Earning a federal CVE credential costs nothing but methodology and discipline. I teach students how to find their first CVE within 90 days using freely available tools and systematic analysis.</p>
+
+        <p><strong>No gatekeeping. No expensive courses. Just methodology shared openly.</strong></p>
+
+        <h2>Professional Credentials</h2>
+        <p>• 10 Federal CVE Assignments<br>
+        • ISC2 Certified in Cybersecurity (CC)<br>
+        • Certified Red Team Operations Manager (CRTOM)<br>
+        • Certified Cloud Ethical Penetration (CCEP)<br>
+        • Google Cybersecurity Professional Certificate<br>
+        • Published by Packet Storm Security (2 advisories)</p>
+    </article>
+
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Syntropy Security</h3>
-                    <p>AI-Augmented Vulnerability Research</p>
-                    <p>Mumbai, Maharashtra, India</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Syntropy Security</h4>
+                    <p>10 Federal CVE Assignments</p>
+                    <p>Mumbai, India</p>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Research</h4>
                     <ul>
-                        <li><a href="https://github.com/Sanka1pp" target="_blank">GitHub Repositories</a></li>
-                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">PacketStorm Publications</a></li>
-                        <li><a href="research.html">CVE Documentation</a></li>
+                        <li><a href="https://packetstorm.news/files/author/31694" target="_blank">Packet Storm</a></li>
+                        <li><a href="https://github.com/Sanka1pp" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Connect</h4>
                     <ul>
                         <li><a href="https://www.linkedin.com/in/sankalp-hanwate-189598284/" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://www.linkedin.com/company/syntropy-security/" target="_blank">Company Page</a></li>
-                        <li><a href="contact.html">Contact Form</a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2025 Syntropy Security. All rights reserved.</p>
-                <p>Founder: Sankalp Devidas Hanwate | ISC2 CC | CRTOM | CCEP</p>
+                <p>&copy; 2026 Syntropy Security</p>
             </div>
         </div>
     </footer>
