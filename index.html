@@ -3,683 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Syntropy Security - AI-Augmented Vulnerability Research. 10 Federal CVE assignments specializing in architectural failures in legacy systems.">
     <title>Syntropy Security | 10 Federal CVE Assignments</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-dark: #0a0e1a;
-            --bg-card: #111827;
-            --bg-card-hover: #1f2937;
-            --text-primary: #f9fafb;
-            --text-secondary: #9ca3af;
-            --accent-primary: #3b82f6;
-            --accent-secondary: #8b5cf6;
-            --accent-gold: #fbbf24;
-            --border-subtle: #374151;
-            --critical: #ef4444;
-            --high: #f97316;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0e1a;
+            color: #e5e7eb;
+            line-height: 1.6;
         }
-
+        
         nav {
             background: rgba(17, 24, 39, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1.25rem 0;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-subtle);
+            z-index: 100;
+            border-bottom: 1px solid #374151;
         }
-
-        .nav-container {
-            max-width: 1280px;
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+        
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.35rem;
+            font-family: monospace;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--accent-gold);
-            letter-spacing: -0.5px;
+            color: #fbbf24;
         }
-
-        .nav-links {
+        
+        nav ul {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
-
-        .nav-links a {
-            color: var(--text-secondary);
+        
+        nav a {
+            color: #9ca3af;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-            position: relative;
+            transition: color 0.2s;
         }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
+        
+        nav a:hover { color: #e5e7eb; }
+        
         .hero {
             background: linear-gradient(135deg, #0a0e1a 0%, #1e3a8a 50%, #312e81 100%);
-            padding: 8rem 2rem 6rem;
+            padding: 6rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
+        
         .hero-tag {
             display: inline-block;
             background: rgba(251, 191, 36, 0.1);
-            color: var(--accent-gold);
-            padding: 0.5rem 1.25rem;
+            color: #fbbf24;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            border: 1px solid rgba(251, 191, 36, 0.3);
         }
-
-        .hero-subtitle {
-            font-size: 1.375rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            color: white;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(249, 250, 251, 0.05);
-            color: var(--text-primary);
-            border: 1px solid var(--border-subtle);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(249, 250, 251, 0.1);
-            border-color: var(--text-secondary);
-        }
-
-        .stats-bar {
-            background: var(--bg-card);
-            padding: 3rem 2rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .stats-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
+        
+        h1 {
             font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            margin-bottom: 1rem;
+            color: #f9fafb;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(249, 250, 251, 0.05);
+            color: #e5e7eb;
+            border: 1px solid #374151;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(249, 250, 251, 0.1);
+        }
+        
+        .stats {
+            background: #111827;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #374151;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 0.5rem;
         }
-
+        
         .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
+            color: #9ca3af;
+            margin-top: 0.5rem;
         }
-
-        .section {
-            padding: 6rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
+        
+        section {
+            padding: 4rem 2rem;
         }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
+        
         .section-tag {
-            display: inline-block;
-            color: var(--accent-primary);
-            font-size: 0.875rem;
+            color: #3b82f6;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 1rem;
         }
-
-        .section-title {
-            font-size: 3rem;
+        
+        h2 {
+            font-size: 2.5rem;
             font-weight: 900;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: #f9fafb;
         }
-
+        
         .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto;
+            color: #9ca3af;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
         }
-
+        
         .cve-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
         }
-
+        
         .cve-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
         }
-
-        .cve-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
+        
         .cve-card:hover {
-            background: var(--bg-card-hover);
+            background: #1f2937;
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-
-        .cve-card:hover::before {
-            opacity: 1;
-        }
-
+        
         .cve-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
-
+        
         .cve-id {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: monospace;
             font-weight: 700;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: #9ca3af;
             background: rgba(249, 250, 251, 0.05);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
         }
-
-        .severity-badge {
-            padding: 0.4rem 1rem;
+        
+        .badge {
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-
-        .severity-critical {
+        
+        .critical {
             background: rgba(239, 68, 68, 0.15);
-            color: var(--critical);
+            color: #ef4444;
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
-
-        .severity-high {
+        
+        .high {
             background: rgba(249, 115, 22, 0.15);
-            color: var(--high);
+            color: #f97316;
             border: 1px solid rgba(249, 115, 22, 0.3);
         }
-
+        
         .cve-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #f9fafb;
         }
-
+        
         .cve-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            color: #9ca3af;
+            margin-bottom: 1rem;
             font-size: 0.95rem;
         }
-
+        
         .cve-links {
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            gap: 1rem;
         }
-
-        .cve-link {
-            color: var(--accent-primary);
+        
+        .cve-links a {
+            color: #3b82f6;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            transition: color 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
         }
-
-        .cve-link:hover {
-            color: var(--accent-secondary);
-        }
-
-        .cve-link::before {
-            content: '→';
-            transition: transform 0.2s ease;
-        }
-
-        .cve-link:hover::before {
-            transform: translateX(3px);
-        }
-
-        .quote-section {
-            margin-top: 4rem;
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .quote-section blockquote {
-            font-size: 1.75rem;
-            font-style: italic;
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .quote-section cite {
-            color: var(--text-secondary);
-            font-style: normal;
-            font-size: 1rem;
-        }
-
+        
+        .cve-links a:hover { color: #8b5cf6; }
+        
         footer {
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-subtle);
-            padding: 4rem 2rem 2rem;
+            background: #111827;
+            border-top: 1px solid #374151;
+            padding: 3rem 2rem 1.5rem;
         }
-
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
+        
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-
+        
         .footer-col h4 {
-            color: var(--accent-gold);
+            color: #fbbf24;
             margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 700;
         }
-
-        .footer-col p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
+        
+        .footer-col p, .footer-col a {
+            color: #9ca3af;
+            text-decoration: none;
         }
-
+        
+        .footer-col a:hover { color: #3b82f6; }
+        
         .footer-col ul {
             list-style: none;
         }
-
+        
         .footer-col li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer-col a:hover {
-            color: var(--accent-primary);
-        }
-
+        
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
         }
-
+        
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .cve-grid {
-                grid-template-columns: 1fr;
-            }
+            h1 { font-size: 2.5rem; }
+            .cve-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="nav-container">
-            <div class="logo">SYNTROPY_SEC</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">SYNTROPY_SEC</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
+        <div class="container">
             <span class="hero-tag">10 Federal CVE Assignments • 71% Success Rate</span>
             <h1>Defense Through Offensive Insight</h1>
-            <p class="hero-subtitle">Discovering architectural vulnerabilities in legacy systems before attackers do. Specializing in healthcare and financial infrastructure security.</p>
-            <div class="cta-buttons">
+            <p class="subtitle">Discovering architectural vulnerabilities in legacy systems before attackers do</p>
+            <div>
                 <a href="research.html" class="btn btn-primary">View Research</a>
                 <a href="contact.html" class="btn btn-secondary">Work With Us</a>
             </div>
         </div>
     </section>
 
-    <section class="stats-bar">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">10</div>
-                <div class="stat-label">Federal CVE Assignments</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">14</div>
-                <div class="stat-label">Vulnerabilities Submitted</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">71%</div>
-                <div class="stat-label">CVE Success Rate</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2</div>
-                <div class="stat-label">Packet Storm Publications</div>
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Federal CVE Assignments</div>
+                </div>
+                <div>
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">Vulnerabilities Submitted</div>
+                </div>
+                <div>
+                    <div class="stat-number">71%</div>
+                    <div class="stat-label">CVE Success Rate</div>
+                </div>
+                <div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Packet Storm Publications</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="section-header">
+    <section>
+        <div class="container" style="text-align: center;">
             <span class="section-tag">FEDERAL RECOGNITION</span>
-            <h2 class="section-title">10 Published CVE Assignments</h2>
-            <p class="section-subtitle">Discovered across healthcare and financial systems using AI-augmented architectural analysis</p>
-        </div>
-
-        <div class="cve-grid">
-            <!-- Original 3 CVEs -->
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2025-70062</span>
-                    <span class="severity-badge severity-high">HIGH</span>
+            <h2>10 Published CVE Assignments</h2>
+            <p class="section-subtitle">Discovered across healthcare and financial systems using AI-augmented analysis</p>
+            
+            <div class="cve-grid">
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2025-70062</span>
+                        <span class="badge high">HIGH</span>
+                    </div>
+                    <h3>Cross-Site Request Forgery</h3>
+                    <p>PHPGurukul HMS v4.0 - Missing anti-CSRF tokens allowing privileged account creation</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2025-70062" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213711" target="_blank">→ PacketStorm</a>
+                    </div>
                 </div>
-                <h3>Cross-Site Request Forgery</h3>
-                <p>PHPGurukul HMS v4.0 - Missing anti-CSRF tokens allowing privileged account creation via forged requests</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2025-70062" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213711" target="_blank" class="cve-link">PacketStorm</a>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2025-70063</span>
+                        <span class="badge high">HIGH</span>
+                    </div>
+                    <h3>Insecure Direct Object Reference</h3>
+                    <p>PHPGurukul HMS v4.0 - Patient medical records exposed via URL manipulation</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2025-70063" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213711" target="_blank">→ PacketStorm</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2025-70064</span>
+                        <span class="badge critical">CRITICAL</span>
+                    </div>
+                    <h3>Privilege Escalation</h3>
+                    <p>PHPGurukul HMS v4.0 - Complete authentication bypass to admin dashboard</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2025-70064" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213711" target="_blank">→ PacketStorm</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26495</span>
+                        <span class="badge critical">CRITICAL</span>
+                    </div>
+                    <h3>SQL Injection (Auth Bypass)</h3>
+                    <p>PHPGurukul HMS v4.0 - SQL injection in admin login bypassing authentication</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26495" target="_blank">→ CVE Record</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26497</span>
+                        <span class="badge high">HIGH</span>
+                    </div>
+                    <h3>Stored Cross-Site Scripting</h3>
+                    <p>PHPGurukul HMS v4.0 - Persistent XSS in user profile enabling session hijacking</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26497" target="_blank">→ CVE Record</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26499</span>
+                        <span class="badge high">HIGH</span>
+                    </div>
+                    <h3>IDOR (Admin Dashboard)</h3>
+                    <p>SourceCodester OBMS v1.0 - Unauthorized access to administrative dashboards</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26499" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213712" target="_blank">→ PacketStorm</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26500</span>
+                        <span class="badge critical">CRITICAL</span>
+                    </div>
+                    <h3>Authenticated SQL Injection (RCE)</h3>
+                    <p>SourceCodester OBMS v1.0 - SQL injection leading to remote code execution</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26500" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213712" target="_blank">→ PacketStorm</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26501</span>
+                        <span class="badge critical">CRITICAL</span>
+                    </div>
+                    <h3>Integer Overflow</h3>
+                    <p>SourceCodester OBMS v1.0 - Integer overflow enabling unlimited fund transfers</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26501" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213712" target="_blank">→ PacketStorm</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26502</span>
+                        <span class="badge critical">CRITICAL</span>
+                    </div>
+                    <h3>Race Condition (Double Spending)</h3>
+                    <p>SourceCodester OBMS v1.0 - Race condition enabling double-spending attacks</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26502" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213712" target="_blank">→ PacketStorm</a>
+                    </div>
+                </div>
+
+                <div class="cve-card">
+                    <div class="cve-header">
+                        <span class="cve-id">CVE-2026-26503</span>
+                        <span class="badge high">HIGH</span>
+                    </div>
+                    <h3>Stored XSS (Admin Takeover)</h3>
+                    <p>SourceCodester OBMS v1.0 - Persistent XSS enabling admin session hijacking</p>
+                    <div class="cve-links">
+                        <a href="https://www.cve.org/CVERecord?id=CVE-2026-26503" target="_blank">→ CVE Record</a>
+                        <a href="https://packetstorm.news/files/id/213712" target="_blank">→ PacketStorm</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2025-70063</span>
-                    <span class="severity-badge severity-high">HIGH</span>
-                </div>
-                <h3>Insecure Direct Object Reference</h3>
-                <p>PHPGurukul HMS v4.0 - Patient medical records exposed via URL manipulation. Critical HIPAA violation.</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2025-70063" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213711" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2025-70064</span>
-                    <span class="severity-badge severity-critical">CRITICAL</span>
-                </div>
-                <h3>Privilege Escalation (RBAC Bypass)</h3>
-                <p>PHPGurukul HMS v4.0 - Complete authentication bypass allowing patient users to access admin dashboard</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2025-70064" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213711" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-
-            <!-- NEW 7 CVEs (Feb 23rd) -->
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26495</span>
-                    <span class="severity-badge severity-critical">CRITICAL</span>
-                </div>
-                <h3>SQL Injection (Auth Bypass)</h3>
-                <p>PHPGurukul HMS v4.0 - SQL injection in admin login bypassing authentication entirely</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26495" target="_blank" class="cve-link">CVE Record</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26497</span>
-                    <span class="severity-badge severity-high">HIGH</span>
-                </div>
-                <h3>Stored Cross-Site Scripting</h3>
-                <p>PHPGurukul HMS v4.0 - Persistent XSS in user profile enabling session hijacking</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26497" target="_blank" class="cve-link">CVE Record</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26499</span>
-                    <span class="severity-badge severity-high">HIGH</span>
-                </div>
-                <h3>IDOR (Admin Dashboard)</h3>
-                <p>SourceCodester OBMS v1.0 - Unauthorized access to administrative dashboards via direct object references</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26499" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26500</span>
-                    <span class="severity-badge severity-critical">CRITICAL</span>
-                </div>
-                <h3>Authenticated SQL Injection (RCE)</h3>
-                <p>SourceCodester OBMS v1.0 - SQL injection in transfer.php leading to remote code execution</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26500" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26501</span>
-                    <span class="severity-badge severity-critical">CRITICAL</span>
-                </div>
-                <h3>Integer Overflow (Financial Logic)</h3>
-                <p>SourceCodester OBMS v1.0 - Integer overflow in amount parameter enabling unlimited fund transfers</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26501" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26502</span>
-                    <span class="severity-badge severity-critical">CRITICAL</span>
-                </div>
-                <h3>Race Condition (Double Spending)</h3>
-                <p>SourceCodester OBMS v1.0 - Race condition in transfer.php enabling double-spending attacks</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26502" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-
-            <div class="cve-card">
-                <div class="cve-header">
-                    <span class="cve-id">CVE-2026-26503</span>
-                    <span class="severity-badge severity-high">HIGH</span>
-                </div>
-                <h3>Stored XSS (Admin Takeover)</h3>
-                <p>SourceCodester OBMS v1.0 - Persistent XSS in feedback.php enabling administrative session hijacking</p>
-                <div class="cve-links">
-                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-26503" target="_blank" class="cve-link">CVE Record</a>
-                    <a href="https://packetstorm.news/files/id/213712" target="_blank" class="cve-link">PacketStorm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="quote-section">
-            <blockquote>"Nice research! You drove a bus through this..."</blockquote>
-            <cite>— Packet Storm Security Staff</cite>
         </div>
     </section>
 
     <footer>
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Syntropy Security</h4>
@@ -699,13 +508,12 @@
                     <h4>Connect</h4>
                     <ul>
                         <li><a href="https://www.linkedin.com/in/sankalp-hanwate-189598284/" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://www.linkedin.com/company/syntropy-security" target="_blank">Company Page</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Syntropy Security. 10 Federal CVE Assignments. Professional vulnerability research and security consulting.</p>
+                <p>&copy; 2026 Syntropy Security. 10 Federal CVE Assignments.</p>
             </div>
         </div>
     </footer>
